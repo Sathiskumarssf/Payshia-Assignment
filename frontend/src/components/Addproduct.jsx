@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Addproduct = () => {
+
+  const navigate = useNavigate();
   const [product, setProduct] = useState({
     name: '',
     description: '',
@@ -46,11 +49,14 @@ const Home = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/v1/products/addproduct', formData, {
+     await axios.post('http://localhost:5000/api/v1/products/addproduct', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+
       });
+
+      navigate('/home');
       // Handle successful creation, e.g., redirect or show a success message
     } catch (error) {
       console.error("Error creating product:", error);
@@ -146,4 +152,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Addproduct;

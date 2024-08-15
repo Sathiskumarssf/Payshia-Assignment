@@ -6,6 +6,7 @@ const fs = require('fs');
 const { createProduct } = require('../controllers/productController');
 const { getProducts } = require('../controllers/productController');
 const { deleteProduct } = require('../controllers/productController');
+const { updateProduct } = require('../controllers/productController');
 
 const router = express.Router();
 
@@ -31,5 +32,7 @@ const upload = multer({ storage: storage });
 router.post('/addproduct', upload.single('image'), createProduct);
 router.get('/displayproduct',getProducts);
 router.delete('/deleteproduct:id',deleteProduct);
+router.put('/updateproduct/:id', upload.single('image'), updateProduct);
+
 
 module.exports = router; 
