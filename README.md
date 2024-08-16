@@ -10,3 +10,5 @@
 
 2   install this in frontend 
     npm install axios react-router-dom
+    npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
+
