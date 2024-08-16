@@ -9,6 +9,7 @@
     JWT_SECRET="skan2d"
 
 2   install this in frontend 
+    npm i
     npm install axios react-router-dom
     npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const Addproduct = () => {
-
+const AddProduct = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState({
     name: '',
@@ -28,10 +27,11 @@ const Addproduct = () => {
     let formErrors = {};
     if (!product.name) formErrors.name = "Product Name is required";
     if (!product.description) formErrors.description = "Description is required";
-    if (!product.price || isNaN(product.price)) formErrors.price = "Valid Price is required";
-    if (!product.quantity || isNaN(product.quantity)) formErrors.quantity = "Valid Quantity is required";
+    if (!product.price || isNaN(product.price) || product.price <= 0) formErrors.price = "Valid Price is required";
+    if (!product.quantity || isNaN(product.quantity) || product.quantity <= 0) formErrors.quantity = "Valid Quantity is required";
     if (!product.category) formErrors.category = "Category is required";
     if (!product.sku) formErrors.sku = "SKU is required";
+    if (!product.image) formErrors.image = "Image is required";
     return formErrors;
   };
 
@@ -49,11 +49,10 @@ const Addproduct = () => {
     }
 
     try {
-     await axios.post('http://localhost:5000/api/v1/products/addproduct', formData, {
+      await axios.post('http://localhost:5000/api/v1/products/addproduct', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-
       });
 
       navigate('/home');
@@ -75,7 +74,6 @@ const Addproduct = () => {
             placeholder="Product Name"
             value={product.name}
             onChange={handleChange}
-            required
           />
           {errors.name && <p className="text-red-500 text-xs mb-4">{errors.name}</p>}
           
@@ -85,7 +83,6 @@ const Addproduct = () => {
             placeholder="Description"
             value={product.description}
             onChange={handleChange}
-            required
           ></textarea>
           {errors.description && <p className="text-red-500 text-xs mb-4">{errors.description}</p>}
           
@@ -96,7 +93,6 @@ const Addproduct = () => {
             placeholder="Price"
             value={product.price}
             onChange={handleChange}
-            required
           />
           {errors.price && <p className="text-red-500 text-xs mb-4">{errors.price}</p>}
           
@@ -107,7 +103,6 @@ const Addproduct = () => {
             placeholder="Quantity"
             value={product.quantity}
             onChange={handleChange}
-            required
           />
           {errors.quantity && <p className="text-red-500 text-xs mb-4">{errors.quantity}</p>}
           
@@ -118,7 +113,6 @@ const Addproduct = () => {
             placeholder="Category"
             value={product.category}
             onChange={handleChange}
-            required
           />
           {errors.category && <p className="text-red-500 text-xs mb-4">{errors.category}</p>}
           
@@ -129,7 +123,6 @@ const Addproduct = () => {
             placeholder="SKU"
             value={product.sku}
             onChange={handleChange}
-            required
           />
           {errors.sku && <p className="text-red-500 text-xs mb-4">{errors.sku}</p>}
           
@@ -139,6 +132,7 @@ const Addproduct = () => {
             name="image"
             onChange={handleChange}
           />
+          {errors.image && <p className="text-red-500 text-xs mb-4">{errors.image}</p>}
           
           <button
             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
@@ -152,4 +146,4 @@ const Addproduct = () => {
   );
 };
 
-export default Addproduct;
+export default AddProduct;
