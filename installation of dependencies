@@ -1,4 +1,4 @@
-1.  Install this in backend 
+1.  Install these in backend 
     npm i
     npm install express mongoose dotenv cors
     npm install jsonwebtoken bcryptjs multer
@@ -8,7 +8,7 @@
     MONGO_URI="mongodb://localhost:27017/auth"
     JWT_SECRET="skan2d"
 
-2   install this in frontend 
+2   install these in frontend 
     npm i
     npm install axios react-router-dom
     npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
