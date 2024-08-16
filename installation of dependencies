@@ -13,6 +13,10 @@
     npm install axios react-router-dom
     npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
+3. *connect your mongoDB compass 
+   *run backend using 'npm start'
+   *run frontend using 'npm start'
+
 
 the path of the pages are 
 * http://localhost:3000/            -register page
