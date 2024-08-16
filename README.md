@@ -4,7 +4,7 @@
     npm install jsonwebtoken bcryptjs multer
 
     And create
-    .env file and add this things
+    .env file inside the backend folder and add this things
     MONGO_URI="mongodb://localhost:27017/auth"
     JWT_SECRET="skan2d"
 
